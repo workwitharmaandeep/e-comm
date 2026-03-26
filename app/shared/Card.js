@@ -4,13 +4,17 @@ import React from 'react';
 import { useState } from 'react';
 //import { useCart } from './CartContext';
 import Link from 'next/link';
+import { usePathname} from 'next/navigation';
 // Import the hook
 const Card = ({ product }) => {
+  const path=usePathname();
+      const activeCategory = path === '/' ? 'Casual' : path.replace('/', '');
+
 //  const { addToCart } = useCart();
   if (!product) return null;
   return (
     <div  className="border border-gray-200 rounded-lg shadow-md overflow-hidden bg-white flex flex-col hover:shadow-xl transition-shadow duration-300" >
-          <Link href="/Pfulldetail">
+          <Link href={`${activeCategory}/${product.id}`}>
       <div className="h-64 overflow-hidden bg-gray-100 flex items-center justify-center">
         <img src={product.imgsrc} alt={product.Name} className="w-full h-full object-cover" />
       </div>
@@ -24,7 +28,7 @@ const Card = ({ product }) => {
             ₹{product?.price ? product.price.toFixed(2) : "0.00"}
           </span>
           {/* Wire up the onClick event here! */}
-              <Link href="/Pfulldetail">
+              <Link href={`${activeCategory}/${product.id}`}>
 
           <button 
           //  onClick={() => addToCart(product)}
