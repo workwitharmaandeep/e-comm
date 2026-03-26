@@ -1,8 +1,10 @@
-import Card from "./shared/Card";
-import Link from "next/link";
-import { getProductsData } from "@/lib/queries";
-export default async function Home() {
-  const products = await getProductsData("Casual");
+import Card from "../shared/Card";
+import { getProductsData } from '@/lib/queries';
+
+export default async function CategoryPage({ params }) {
+  const {category} = await params;
+  
+  const products = await getProductsData(category);
   return (
     <main className="max-w-7xl mx-auto px-4 py-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

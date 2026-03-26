@@ -8,10 +8,9 @@ import Banner from './Banner';
 
 export default function Navbar() {
   const pathname = usePathname(); // 2. Get the current URL path
-  
   // 3. Derive the active category from the URL.
   // Remove the leading slash. If it's the root path ('/'), default to "Casual".
-  const activeCategory = pathname === '/' ? 'Casual' : pathname.replace('/', '');
+   const activeCategory = pathname === '/' ? 'Casual' : pathname.replace('/', '');
 
   const categoryStyles = {
     Casual: { bg: 'bg-[#AAB8AB]', banner: 'bg-[url(/banner/Casual.png)]' },
