@@ -1,7 +1,10 @@
+// app/layout.js
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./shared/Navbar";
 import { CartProvider } from "./shared/CartContext";
+import Sessionwrap from "./shared/Sessionwrap"; // 1. Import the wrapper
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,10 +24,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <CartProvider>
-          <Navbar/>
-        {children}
-        </CartProvider>
+        {/* 2. Wrap the app inside Sessionwrap */}
+        <Sessionwrap> 
+          <CartProvider>
+            <Navbar/>
+            {children}
+          </CartProvider>
+        </Sessionwrap>
       </body>
     </html>
   );

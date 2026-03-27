@@ -61,9 +61,11 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4 order-2 md:order-3">
+          <Link href="/login">
           <button className="text-sm font-semibold hover:text-gray-200 transition-colors">
             Login
           </button>
+          </Link>
           <Link href="/cart" className="bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-bold shadow-sm hover:bg-gray-100 transition-colors flex items-center space-x-2">
             <span>Cart</span>
             <span className="bg-gray-900 text-white text-xs px-2 py-0.5 rounded-full">{cart.length}</span>
