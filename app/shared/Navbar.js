@@ -1,4 +1,3 @@
-// app/shared/Navbar.js
 "use client";
 import React from 'react';
 import Link from 'next/link';
@@ -9,14 +8,10 @@ import Banner from './Banner';
 export default function Navbar() {
   const pathname = usePathname(); 
   
-  // 1. Split the path into segments and remove empty strings
-  // Example: "/Casual/123" becomes ["Casual", "123"]
   const pathSegments = pathname.split('/').filter(Boolean);
   
-  // 2. The active category is the first segment (defaults to "Casual" if on the home page)
   const activeCategory = pathSegments.length > 0 ? pathSegments[0] : 'Casual';
 
-  // 3. Check if we are on a product detail page (exactly 2 segments)
   const isProductDetailPage = pathSegments.length === 2;
 
   const categoryStyles = {
@@ -79,7 +74,6 @@ export default function Navbar() {
         
       </nav>
       
-      {/* 4. Conditionally render the Banner only if it's NOT a product detail page */}
       {!isProductDetailPage && <Banner currentStyle={currentStyle}/>}
     </header>
   );

@@ -9,7 +9,6 @@ export const authOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
-  // Optional: You can customize pages here, e.g., redirecting to custom login page
 };
 
 const handler = NextAuth(authOptions);

@@ -30,10 +30,8 @@ export default async function ProductDetailPage({ params }) {
         </Link>
       </div>
 
-      {/* Product Details Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100">
         
-        {/* Left Side: Product Image */}
         <div className="h-96 md:h-125 bg-gray-50 rounded-xl overflow-hidden flex items-center justify-center border border-gray-100">
           <img
             src={product.imgsrc}
@@ -42,7 +40,6 @@ export default async function ProductDetailPage({ params }) {
           />
         </div>
 
-        {/* Right Side: Product Info */}
         <div className="flex flex-col justify-center">
           <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 uppercase tracking-wide">
             {product.Name}
@@ -59,7 +56,6 @@ export default async function ProductDetailPage({ params }) {
             </p>
           </div>
 
-          {/* Call to Action */}
           <AddToCartButton product={product} />
         </div>
         

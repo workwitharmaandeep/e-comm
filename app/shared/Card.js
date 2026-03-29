@@ -1,16 +1,12 @@
-// app/shared/Card.js
-"use client"; // Important: This must be a client component now because it has a click event
+"use client";
 import React from 'react';
 import { useState } from 'react';
-//import { useCart } from './CartContext';
 import Link from 'next/link';
 import { usePathname} from 'next/navigation';
-// Import the hook
 const Card = ({ product }) => {
   const path=usePathname();
       const activeCategory = path === '/' ? 'Casual' : path.replace('/', '');
 
-//  const { addToCart } = useCart();
   if (!product) return null;
   return (
     <div  className="border border-gray-200 rounded-lg shadow-md overflow-hidden bg-white flex flex-col hover:shadow-xl transition-shadow duration-300" >
@@ -27,11 +23,9 @@ const Card = ({ product }) => {
           <span className="text-lg font-bold text-green-600">
             ₹{product?.price ? product.price.toFixed(2) : "0.00"}
           </span>
-          {/* Wire up the onClick event here! */}
               <Link href={`${activeCategory}/${product.id}`}>
 
           <button 
-          //  onClick={() => addToCart(product)}
             className="bg-[#b8aab7] hover:bg-[#AAB8AB] text-white px-4 py-2 rounded-md transition duration-300"
           >
             See full details

@@ -1,6 +1,5 @@
 "use client";
 import React from 'react'
-//import { currentStyle } from './Navbar'
 function Banner(props){
   return (
       <div 
