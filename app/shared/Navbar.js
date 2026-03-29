@@ -2,15 +2,22 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // 1. Import usePathname
+import { usePathname } from 'next/navigation';
 import { useCart } from './CartContext';
 import Banner from './Banner';
 
 export default function Navbar() {
-  const pathname = usePathname(); // 2. Get the current URL path
-  // 3. Derive the active category from the URL.
-  // Remove the leading slash. If it's the root path ('/'), default to "Casual".
-   const activeCategory = pathname === '/' ? 'Casual' : pathname.replace('/', '');
+  const pathname = usePathname(); 
+  
+  // 1. Split the path into segments and remove empty strings
+  // Example: "/Casual/123" becomes ["Casual", "123"]
+  const pathSegments = pathname.split('/').filter(Boolean);
+  
+  // 2. The active category is the first segment (defaults to "Casual" if on the home page)
+  const activeCategory = pathSegments.length > 0 ? pathSegments[0] : 'Casual';
+
+  // 3. Check if we are on a product detail page (exactly 2 segments)
+  const isProductDetailPage = pathSegments.length === 2;
 
   const categoryStyles = {
     Casual: { bg: 'bg-[#AAB8AB]', banner: 'bg-[url(/banner/Casual.png)]' },
@@ -19,7 +26,6 @@ export default function Navbar() {
     Sports: { bg: 'bg-[#7D5E5E]', banner: 'bg-[url(/banner/Sports.png)]' },
   };
 
-  // Fallback to Casual style if the path doesn't match a category (e.g., when on the /cart page)
   const currentStyle = categoryStyles[activeCategory] || categoryStyles.Casual;
   
   const { cart } = useCart();
@@ -29,7 +35,6 @@ export default function Navbar() {
       <nav 
         className={`sticky top-0 z-50 flex flex-wrap items-center justify-between px-4 sm:px-8 py-3 transition-colors duration-500 text-white ${currentStyle.bg}`}
       >
-        
         <div className="flex items-center space-x-3">
           <div className="bg-white/20 p-2 rounded-full">
             <img src="/banner/casual.png" alt="Armaan Logo" className="w-8 h-8 object-contain" />
@@ -62,18 +67,20 @@ export default function Navbar() {
 
         <div className="flex items-center space-x-4 order-2 md:order-3">
           <Link href="/login">
-          <button className="text-sm font-semibold hover:text-gray-200 transition-colors">
-            Login
-          </button>
+            <button className="text-sm font-semibold hover:text-gray-200 transition-colors">
+              Login
+            </button>
           </Link>
           <Link href="/cart" className="bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-bold shadow-sm hover:bg-gray-100 transition-colors flex items-center space-x-2">
             <span>Cart</span>
-            <span className="bg-gray-900 text-white text-xs px-2 py-0.5 rounded-full">{cart.length}</span>
+            <span className="bg-gray-900 text-white text-xs px-2 py-0.5 rounded-full">{cart?.length || 0}</span>
           </Link>
         </div>
         
       </nav>
-      <Banner currentStyle={currentStyle}/>
+      
+      {/* 4. Conditionally render the Banner only if it's NOT a product detail page */}
+      {!isProductDetailPage && <Banner currentStyle={currentStyle}/>}
     </header>
   );
 }

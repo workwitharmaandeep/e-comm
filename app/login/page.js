@@ -1,5 +1,6 @@
 // app/login/page.js
 "use client";
+import Google from "next-auth/providers/google";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function LoginPage() {
@@ -22,7 +23,7 @@ export default function LoginPage() {
         
         <button 
           onClick={() => signOut({ callbackUrl: '/' })}
-          className="w-full bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition"
+          className="w-full h-2 bg-red-500 text-green font-bold py-2 px-4 rounded hover:bg-red-600 transition"
         >
           Sign out
         </button>
@@ -37,7 +38,7 @@ export default function LoginPage() {
       
       {/* Explicitly call 'google' provider and redirect to home after login */}
       <button 
-        onClick={() => signIn('google', { callbackUrl: '/' })}
+        onClick={() => signIn('google', { callbackUrl: '/cart' })}
         className="w-full bg-gray-900 text-white font-bold py-3 px-4 rounded hover:bg-gray-800 transition flex items-center justify-center gap-2"
       >
         Sign in with Google
