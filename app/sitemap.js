@@ -2,7 +2,7 @@
 import pool from '../lib/db'; // Adjust this path to wherever your TiDB connection file is
 
 export default async function sitemap() {
-  const baseUrl = 'https://armaancollection.vercel.app/'; // Change to your live URL
+  const baseUrl = 'https://armaancollection.vercel.app'; // Change to your live URL
 
   // 1. Define your standard, static pages
   const staticRoutes = ['', '/products', '/about', '/contact'].map((route) => ({
