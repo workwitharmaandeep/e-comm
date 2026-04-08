@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next";
 import Navbar from "./shared/Navbar";
 import { CartProvider } from "./shared/CartContext";
 import Sessionwrap from "./shared/Sessionwrap"; 
@@ -31,6 +32,8 @@ export default function RootLayout({ children }) {
             {children}
           </CartProvider>
         </Sessionwrap>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
