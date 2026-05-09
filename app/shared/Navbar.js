@@ -15,10 +15,10 @@ export default function Navbar() {
   const isProductDetailPage = pathSegments.length === 2;
 
   const categoryStyles = {
-    Casual: { bg: 'bg-[#AAB8AB]', banner: 'bg-[url(/banner/Casual.png)]' },
-    Formal: { bg: 'bg-[#54677A]', banner: 'bg-[url(/banner/Formal.png)]' },
-    Traditional: { bg: 'bg-[#C5957D]', banner: 'bg-[url(/banner/Traditional.png)]' },
-    Sports: { bg: 'bg-[#7D5E5E]', banner: 'bg-[url(/banner/Sports.png)]' },
+    Casual: { bg: 'bg-[#AAB8AB]', banner: 'bg-[url(https://ik.imagekit.io/9gkkju2ht/Casual_xLqYDwqeCF.png?updatedAt=1778327601137)]' },
+    Formal: { bg: 'bg-[#54677A]', banner: 'bg-[url(https://ik.imagekit.io/9gkkju2ht/Formal_EH-h0Q6-7.png?updatedAt=1778327609955)]' },
+    Traditional: { bg: 'bg-[#C5957D]', banner: 'bg-[url(https://ik.imagekit.io/9gkkju2ht/Sports_s0U0tQv3O.png)]' },
+    Sports: { bg: 'bg-[#7D5E5E]', banner: 'bg-[url(https://ik.imagekit.io/9gkkju2ht/Traditional_eX-ho60-8.png)]' },
   };
 
   const currentStyle = categoryStyles[activeCategory] || categoryStyles.Casual;
