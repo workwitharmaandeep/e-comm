@@ -7,9 +7,7 @@ import Link from 'next/link';
 export default function CartPage() {
   const { cart, removeFromCart } = useCart();
 
-  const cartTotal = cart.reduce((total, item) => total + (item.price || 0), 0);
-
-  if (cart.length === 0) {
+const cartTotal = cart.reduce((total, item) => total + (Number(item.base_price) || 0), 0);  if (cart.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Your cart is empty</h1>
@@ -29,11 +27,10 @@ export default function CartPage() {
           {cart.map((item, index) => (
             <div key={index} className="flex items-center justify-between bg-white p-4 rounded-lg shadow-sm border border-gray-100">
               <div className="flex items-center space-x-4">
-                <img src={item.imgsrc} alt={item.Name} className="w-20 h-20 object-cover rounded bg-gray-100" />
+                <img src={item.dp} alt={item.name} className="w-20 h-20 object-cover rounded bg-gray-100" />
                 <div>
-                  <h2 className="text-lg font-semibold text-gray-800">{item.Name}</h2>
-                  <p className="text-gray-500 text-sm">${item.price ? item.price.toFixed(2) : "0.00"}</p>
-                </div>
+                  <h2 className="text-lg font-semibold text-gray-800">{item.name}</h2>
+<p className="text-gray-500 text-sm">₹{item.base_price ? Number(item.base_price).toFixed(2) : "0.00"}</p>              </div>
               </div>
               <button 
                 onClick={() => removeFromCart(index)}
@@ -57,10 +54,11 @@ export default function CartPage() {
             <span className="text-lg font-bold text-gray-900">Total</span>
             <span className="text-lg font-bold text-green-600">{cartTotal.toFixed(2)}</span>
           </div>
-
-          <button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-md transition shadow-md">
+          <Link href="/checkout" className="w-full">
+          <button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-md transition shadow-md" >
             Proceed to Checkout
           </button>
+          </Link>
         </div>
       </div>
     </div>

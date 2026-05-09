@@ -1,6 +1,7 @@
 import Card from "./shared/Card";
 import Link from "next/link";
 import { getProductsData } from "@/lib/queries";
+import Imageupload from "./shared/Imageupload";
 export default async function Home() {
   const products = await getProductsData("Casual");
   return (

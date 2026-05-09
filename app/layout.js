@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import Navbar from "./shared/Navbar";
 import { CartProvider } from "./shared/CartContext";
 import Sessionwrap from "./shared/Sessionwrap"; 
-
+import { CheckoutProvider } from "./shared/CheckoutContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,8 +27,10 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Sessionwrap> 
           <CartProvider>
+            <CheckoutProvider>
             <Navbar/>
             {children}
+            </CheckoutProvider>
           </CartProvider>
         </Sessionwrap>
       </body>

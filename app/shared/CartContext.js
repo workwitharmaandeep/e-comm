@@ -7,7 +7,7 @@ export function CartProvider({ children }) {
 
   const addToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
-    alert(`${product.Name} was added to your cart!`); // A quick feedback popup
+    alert(`${product.name} was added to your cart!`); // A quick feedback popup
   };
   const removeFromCart = (indexToRemove) => {
     setCart((prevCart) => prevCart.filter((_, index) => index !== indexToRemove));

@@ -34,25 +34,24 @@ export default async function ProductDetailPage({ params }) {
         
         <div className="h-96 md:h-125 bg-gray-50 rounded-xl overflow-hidden flex items-center justify-center border border-gray-100">
           <img
-            src={product.imgsrc}
-            alt={product.Name}
+            src={product.dp}
+            alt={product.name}
             className="w-full h-full object-cover"
           />
         </div>
 
         <div className="flex flex-col justify-center">
           <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 uppercase tracking-wide">
-            {product.Name}
+            {product.name}
           </h1>
           
           <p className="text-3xl font-bold text-green-600 mb-8">
-            ₹{product?.price ? product.price.toFixed(2) : "0.00"}
-          </p>
+₹{product?.base_price ? Number(product.base_price).toFixed(2) : "0.00"}          </p>
 
           <div className="mb-10">
             <h3 className="text-lg font-bold text-gray-900 mb-3 border-b pb-2">Description</h3>
             <p className="text-gray-600 leading-relaxed">
-              {product.desc || "No description available for this product."}
+              {product.description || "No description available for this product."}
             </p>
           </div>
 

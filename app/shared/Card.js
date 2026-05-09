@@ -12,17 +12,16 @@ const Card = ({ product }) => {
     <div  className="border border-gray-200 rounded-lg shadow-md overflow-hidden bg-white flex flex-col hover:shadow-xl transition-shadow duration-300" >
           <Link href={`${activeCategory}/${product.id}`}>
       <div className="h-64 overflow-hidden bg-gray-100 flex items-center justify-center">
-        <img src={product.imgsrc} alt={product.Name} className="w-full h-full object-cover" />
+        <img src={product.dp} alt={product.name} className="w-full h-full object-cover" />
       </div>
       </Link>
       <div className="p-4 flex flex-col grow">
-        <h2 className="text-xl font-semibold text-gray-800">{product.Name}</h2>
-        <p className="text-gray-500 text-sm mt-2 grow">{product.desc}</p>
+        <h2 className="text-xl font-semibold text-gray-800">{product.name}</h2>
+        <p className="text-gray-500 text-sm mt-2 grow">{product.description}</p>
         
         <div className="mt-4 flex items-center justify-between">
           <span className="text-lg font-bold text-green-600">
-            ₹{product?.price ? product.price.toFixed(2) : "0.00"}
-          </span>
+₹{product?.base_price ? Number(product.base_price).toFixed(2) : "0.00"}          </span>
               <Link href={`${activeCategory}/${product.id}`}>
 
           <button 
