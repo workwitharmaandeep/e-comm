@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
             </CheckoutProvider>
           </CartProvider>
         </Sessionwrap>
+        <SpeedInsights />
       </body>
     </html>
   );
